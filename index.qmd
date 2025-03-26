@@ -1,0 +1,122 @@
+---
+title: "lionfish"
+subtitle: "<font color='black'> Interactive Visualization for Market Segmentation </font> <br> <br> <br>**Ursula Laa** <br> University of Natural Resources and Life Sciences, Vienna <br> <br> <font color='black'>work with Matthias Medl and Di Cook </font> "
+format:
+  revealjs:
+    theme: [default, 'boku.scss']
+    scrollable: true
+    slide-number: true
+    code-line-numbers: false
+    reference-location: document
+    preview-links: auto
+    logo: 'BOKU_2024.png'
+    footer: "uschilaa.github.io/dagstat25"
+    # embed-resources: true
+    chalkboard:
+      buttons: false
+---
+
+## Introduction
+
+
+- In **market segmentation** clustering can be used to find groups of similar customers, and visualization is vital for the interpretation of the results.
+- With **interactive visualization** we can improve our understanding of how the identified clusters differ, but we can also update the solution based on our own knowledge and interests.
+- This is related to how we manually define clusters from scratch in a **spin-and-brush** approach.
+
+
+## lionfish conception
+
+We want a tool that allows us to:
+
+1. Visualize the partitions in combinations of features using tour methods, both grand tour and **manual tour**.
+2. Interactively select points (brushing) to refine the cluster solution, **spin-and-brush**.
+3. Link multiple displays to focus on particular clusters, and to better understand the clustering solution.
+4. Update displays based on user selections such as feature selection or cluster selection, or re-scaling.
+
+
+## Implementation
+
+A graphical user interface has been implemented in the `R` package `lionfish`:
+
+- `R` package to work with implementations of clustering algorithms, and with the `tourr` package to generate tour paths
+- `python` interface to use `TKinter` and `matplotlib` for the GUI and the interactive graphics
+- `matplotlib` enables fast rendering and interactivity for linked brushing and manual tours
+
+## 
+
+<p><embed src="subset_selection_demo.gif" style="width:100.0%" /></p>
+
+## 
+
+<p><embed src="update_frames_demo.gif" style="width:100.0%" /></p>
+
+## Running lionfish - minimal example
+
+```{r eval=FALSE, echo=TRUE}
+library(lionfish)
+library(tourr)
+# setting up python environment
+init_env()
+# saving a tour path
+guided_tour_history <- save_history(data,
+                                    tour_path =
+                                    guided_tour(holes()))
+# generating the displays
+obj1 <- list(type="2d_tour", obj=guided_tour_history)
+obj2 <- list(type="scatter", obj=c("x1", "x2"))
+# launching the GUI
+interactive_tour(data=data,
+                 plot_objects=list(obj1, obj2),
+                 feature_names=colnames(data))
+```
+
+For full overview of displays and interactivity check out the vignettes from <https://mmedl94.github.io/lionfish/>
+
+## Example: Austrian Vacation Activities
+
+- Survey by the Europäisches Tourismus Institut GmbH at the University of Trier, 2,961 adult tourists spending their winter holiday in Austria in the 1997/98 season
+- 27 vacation activities were ranked between "totally important" and "not important" (4 levels)
+- We work with binary values ("totally important" or not), see [Dolnicar S, Leisch F (2003)](http://dx.doi.org/10.1177/0047287502239037) for details
+- Start from k-means cluster solution with k=6, visual feature selection of 12 vacation activities that are different between the clusters
+
+## 
+
+![](winter_activ_cluster_highlights.png) 
+
+## Spin-and-brush
+
+![Original clustering](clusters_before.png){width=49%} 
+![Brushing new cluster](clusters_after.png){width=49%}
+
+## Spin-and-brush
+
+![Original clustering](mosaic_before.png){width=49%} 
+![Brushing new cluster](mosaic_after.png){width=48%}
+
+## Example: Risk Taking
+
+- Survey of 563 Australian
+- Six different types of risks: recreational, health, career, financial, social and safety
+- Rated on a scale from 1 (never) to 5 (very often)
+- Observations were grouped using k-means clustering with k=5
+
+
+## Manual tour exploration
+
+![](risk.mov){width=100%}
+
+## Looking for better separation
+
+![](regrouped_risk.png){width=100%}
+
+## Summary
+
+- The `lionfish` package was tailored to market segmentation analysis, but can also be used for other tasks
+- The implementation is modular, new types of visualizations can easily be added to the package
+- Integration of `R` and `python` seamless thanks to `reticulate`
+- The package is on CRAN, an article describing the implementation and market segmentation analyses will appear in the Austrian Journal of Statistics
+
+::: {style="font-size: 70%;"}
+The `lionfish` package implementation was part of a **Google Summer of Code** project
+:::
+

@@ -1,6 +1,6 @@
 ---
 title: "lionfish"
-subtitle: "<font color='black'> Interactive Visualization for Market Segmentation </font> <br> <br> <br>**Ursula Laa** <br> University of Natural Resources and Life Sciences, Vienna <br> <br> <font color='black'>work with Matthias Medl and Di Cook </font> "
+subtitle: "<font color='black'> Interactive Visualization for Market Segmentation </font> <br> <br> <br>**Ursula Laa** <br> BOKU University, Vienna <br> <br> <font color='black'>work with Matthias Medl and Di Cook </font> "
 format:
   revealjs:
     theme: [default, 'boku.scss']
@@ -28,7 +28,7 @@ format:
 
 We want a tool that allows us to:
 
-1. Visualize the partitions in combinations of features using tour methods, both grand tour and **manual tour**.
+1. Visualize the partitions in combinations of features using tour methods, both grand, guided and **manual tour**.
 2. Interactively select points (brushing) to refine the cluster solution, **spin-and-brush**.
 3. Link multiple displays to focus on particular clusters, and to better understand the clustering solution.
 4. Update displays based on user selections such as feature selection or cluster selection, or re-scaling.
@@ -79,9 +79,13 @@ For full overview of displays and interactivity check out the vignettes from <ht
 - We work with binary values ("totally important" or not), see [Dolnicar S, Leisch F (2003)](http://dx.doi.org/10.1177/0047287502239037) for details
 - Start from k-means cluster solution with k=6, visual feature selection of 12 vacation activities that are different between the clusters
 
-## 
+## Refining cluster labels
 
-![](winter_activ_cluster_highlights.png) 
+**Workflow:**
+
+1. We start by exploring the current cluster assignments in the GUI, to identify observations of interest
+2. Use the brush to assign such a group of observations to a new cluster
+3. Examine the new group across different displays, here for example we use a mosaic plot for the binary replies
 
 ## Spin-and-brush
 
@@ -95,10 +99,11 @@ For full overview of displays and interactivity check out the vignettes from <ht
 
 ## Example: Risk Taking
 
-- Survey of 563 Australian
+- Survey of 563 Australian tourists, see [Dolnicar S, Grün B, Leisch F (2018)](https://link.springer.com/book/10.1007/978-981-10-8818-6)
 - Six different types of risks: recreational, health, career, financial, social and safety
 - Rated on a scale from 1 (never) to 5 (very often)
-- Observations were grouped using k-means clustering with k=5
+- Observations were grouped using k-means clustering, k=5
+- Understand cluster differences with a combination of guided and manual tour, where we can select clusters of interest interactively
 
 
 ## Manual tour exploration
@@ -117,6 +122,6 @@ For full overview of displays and interactivity check out the vignettes from <ht
 - The package is on CRAN, an article describing the implementation and market segmentation analyses will appear in the Austrian Journal of Statistics
 
 ::: {style="font-size: 70%;"}
-The `lionfish` package implementation was part of a **Google Summer of Code** project
+The `lionfish` package implementation was supported by **Google Summer of Code**
 :::
 

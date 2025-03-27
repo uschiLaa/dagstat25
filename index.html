@@ -394,7 +394,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">lionfish</h1>
-  <p class="subtitle"><font color="black"> Interactive Visualization for Market Segmentation </font> <br> <br> <br><strong>Ursula Laa</strong> <br> University of Natural Resources and Life Sciences, Vienna <br> <br> <font color="black">work with Matthias Medl and Di Cook </font></p>
+  <p class="subtitle"><font color="black"> Interactive Visualization for Market Segmentation </font> <br> <br> <br><strong>Ursula Laa</strong> <br> BOKU University, Vienna <br> <br> <font color="black">work with Matthias Medl and Di Cook </font></p>
 
 <div class="quarto-title-authors">
 </div>
@@ -412,7 +412,7 @@
 <h2>lionfish conception</h2>
 <p>We want a tool that allows us to:</p>
 <ol type="1">
-<li>Visualize the partitions in combinations of features using tour methods, both grand tour and <strong>manual tour</strong>.</li>
+<li>Visualize the partitions in combinations of features using tour methods, both grand, guided and <strong>manual tour</strong>.</li>
 <li>Interactively select points (brushing) to refine the cluster solution, <strong>spin-and-brush</strong>.</li>
 <li>Link multiple displays to focus on particular clusters, and to better understand the clustering solution.</li>
 <li>Update displays based on user selections such as feature selection or cluster selection, or re-scaling.</li>
@@ -469,10 +469,15 @@
 <li>Start from k-means cluster solution with k=6, visual feature selection of 12 vacation activities that are different between the clusters</li>
 </ul>
 </section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-
-<img data-src="winter_activ_cluster_highlights.png" class="r-stretch"></section>
+<section id="refining-cluster-labels" class="slide level2 scrollable">
+<h2>Refining cluster labels</h2>
+<p><strong>Workflow:</strong></p>
+<ol type="1">
+<li>We start by exploring the current cluster assignments in the GUI, to identify observations of interest</li>
+<li>Use the brush to assign such a group of observations to a new cluster</li>
+<li>Examine the new group across different displays, here for example we use a mosaic plot for the binary replies</li>
+</ol>
+</section>
 <section id="spin-and-brush" class="slide level2">
 <h2>Spin-and-brush</h2>
 <p><img data-src="clusters_before.png" style="width:49.0%" alt="Original clustering"> <img data-src="clusters_after.png" style="width:49.0%" alt="Brushing new cluster"></p>
@@ -484,10 +489,11 @@
 <section id="example-risk-taking" class="slide level2">
 <h2>Example: Risk Taking</h2>
 <ul>
-<li>Survey of 563 Australian</li>
+<li>Survey of 563 Australian tourists, see <a href="https://link.springer.com/book/10.1007/978-981-10-8818-6">Dolnicar S, Grün B, Leisch F (2018)</a></li>
 <li>Six different types of risks: recreational, health, career, financial, social and safety</li>
 <li>Rated on a scale from 1 (never) to 5 (very often)</li>
-<li>Observations were grouped using k-means clustering with k=5</li>
+<li>Observations were grouped using k-means clustering, k=5</li>
+<li>Understand cluster differences with a combination of guided and manual tour, where we can select clusters of interest interactively</li>
 </ul>
 </section>
 <section id="manual-tour-exploration" class="slide level2">
@@ -507,7 +513,7 @@
 <li>The package is on CRAN, an article describing the implementation and market segmentation analyses will appear in the Austrian Journal of Statistics</li>
 </ul>
 <div style="font-size: 70%;">
-<p>The <code>lionfish</code> package implementation was part of a <strong>Google Summer of Code</strong> project</p>
+<p>The <code>lionfish</code> package implementation was supported by <strong>Google Summer of Code</strong></p>
 </div>
 <div class="quarto-auto-generated-content">
 <p><img src="BOKU_2024.png" class="slide-logo"></p>
